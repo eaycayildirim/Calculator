@@ -8,7 +8,7 @@ namespace CalculatorMethods
 {
     class Calculator
     {
-        private string first_number;
+        private double first_number;
         private double second_number;
         private char operation_symbol;
         private double result;
@@ -22,28 +22,36 @@ namespace CalculatorMethods
 
         private double firstNumber()
         {
-            List<string> list = new List<string>();
-            string input;
+            string first_number_string = Console.ReadLine();
             
-            while (!list.Contains))
+            while (first_number_string.All(char.IsDigit))
             {
-                input = Console.ReadLine();
-                if ()
+                first_number_string = String.Concat(first_number_string, Console.ReadLine());
+                if (!first_number_string.All(char.IsDigit))
+                {
+                    first_number_string = first_number_string.Remove(first_number_string.Length - 1);
                     break;
-                else
-                    list.Add(input);
+                }
             }
-
-            foreach (var item in list)
-            {
-                first_number = String.Concat(first_number, item);
-            }
-            return Convert.ToDouble(first_number);
+            first_number = Convert.ToDouble(first_number_string);
+            return first_number;
         }
 
         private double secondNumber()
         {
-            return Convert.ToDouble(Console.ReadLine());
+            string second_number_string = Console.ReadLine();
+
+            while (second_number_string.All(char.IsDigit))
+            {
+                second_number_string = String.Concat(second_number_string, Console.ReadLine());
+                if (!second_number_string.All(char.IsDigit))
+                {
+                    second_number_string = second_number_string.Remove(second_number_string.Length - 1);
+                    break;
+                }
+            }
+            second_number = Convert.ToDouble(second_number_string);
+            return second_number;
         }
 
         private char operationSymbol()
@@ -73,20 +81,9 @@ namespace CalculatorMethods
                 return false;
         }
 
-        public bool IsDigitsOnly(string str)
-        {
-            foreach (char c in str)
-            {
-                if (c < '0' || c > '9')
-                    return false;
-            }
-
-            return true;
-        }
-
         public double calculation()
         {
-            Console.WriteLine(firstNumber());
+            //firstNumber();
             //operationSymbol();
             //do
             //{
@@ -96,6 +93,15 @@ namespace CalculatorMethods
             //    operationSymbol();
             //} while (operation_symbol != '=');
 
+            firstNumber();
+            while (!isOperationSymbolIsEqual())
+            {
+                selectingOperation();
+                secondNumber();
+                result = selectingOperation().calculate(first_number, second_number);
+                first_number = result;
+                selectingOperation();
+            }
 
             return result;
         }
