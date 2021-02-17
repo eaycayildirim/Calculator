@@ -37,13 +37,12 @@ namespace CalculatorOperations
             return first_number * second_number;
         }
     }
-
-    public class CalculatingOperations
+    public class Equal
     {
-        static public double compute(double first_number, double second_number, Operation operation)
-        {
-            return operation.calculate(first_number, second_number);
-        }
-
+        //public Equal()
+        //{
+        //    this.operation_symbol = '=';
+        //}
+        //private char operation_symbol;   
     }
 }
