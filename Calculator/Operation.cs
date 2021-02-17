@@ -39,10 +39,10 @@ namespace CalculatorOperations
     }
     public class Equal
     {
-        public Equal()
-        {
-            this.operation_symbol = '=';
-        }
-        private char operation_symbol;   
+        //public Equal()
+        //{
+        //    this.operation_symbol = '=';
+        //}
+        //private char operation_symbol;   
     }
 }

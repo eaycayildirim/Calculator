@@ -22,55 +22,57 @@ namespace CalculatorMethods
 
         private double firstNumber()
         {
-            string first_number_string = Console.ReadLine();
-            
-            while (first_number_string.All(char.IsDigit))
-            {
-                first_number_string = String.Concat(first_number_string, Console.ReadLine());
-                if (!first_number_string.All(char.IsDigit))
-                {
-                    first_number_string = first_number_string.Remove(first_number_string.Length - 1);
-                    break;
-                }
-            }
-            first_number = Convert.ToDouble(first_number_string);
-            return first_number;
+            return savingTheNumber();
         }
 
         private double secondNumber()
         {
-            string second_number_string = Console.ReadLine();
-
-            while (second_number_string.All(char.IsDigit))
-            {
-                second_number_string = String.Concat(second_number_string, Console.ReadLine());
-                if (!second_number_string.All(char.IsDigit))
-                {
-                    second_number_string = second_number_string.Remove(second_number_string.Length - 1);
-                    break;
-                }
-            }
-            second_number = Convert.ToDouble(second_number_string);
-            return second_number;
+            return savingTheNumber();
         }
 
-        private char operationSymbol()
+        public double savingTheNumber()
         {
-            operation_symbol = Convert.ToChar(Console.ReadLine());
-            return operation_symbol;
+            char char_number;
+            string number = "";
+
+            do
+            {
+                char_number = Convert.ToChar(Console.ReadLine());
+                number += char_number;
+                if (!isValidNumber(char_number))
+                {
+                    operation_symbol = number[number.Length - 1];
+                }
+            } while (isValidNumber(char_number));
+            number = number.Remove(number.Length - 1);
+
+            return Convert.ToDouble(number);
         }
+
+        //private char operationSymbol()
+        //{
+        //    operation_symbol = Convert.ToChar(Console.ReadLine());
+        //    return operation_symbol;
+        //}
 
         private Operation selectingOperation()
         {
-            operationSymbol();
+            //operationSymbol();
             if (operation_symbol == '+')
                 return new Sum();
             else if (operation_symbol == '-')
                 return new Substract();
             else if (operation_symbol == '*')
                 return new Multiply();
-            else
+            else if (operation_symbol == '/')
                 return new Division();
+            else
+                throw new Exception();
+        }
+
+        public bool isValidNumber(char char_number)
+        {
+            return (char.IsDigit(char_number) || char_number == ',') ? true : false;
         }
 
         public bool isOperationSymbolIsEqual()
@@ -83,20 +85,10 @@ namespace CalculatorMethods
 
         public double calculation()
         {
-            //firstNumber();
-            //operationSymbol();
-            //do
-            //{
-            //    secondNumber();
-            //    result = selectingOperation().calculate(first_number, second_number);
-            //    first_number = result;
-            //    operationSymbol();
-            //} while (operation_symbol != '=');
-
             firstNumber();
+            selectingOperation();
             while (!isOperationSymbolIsEqual())
             {
-                selectingOperation();
                 secondNumber();
                 result = selectingOperation().calculate(first_number, second_number);
                 first_number = result;
