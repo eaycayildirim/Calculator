@@ -1,0 +1,176 @@
+﻿<Window x:Class="CalculatorUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculatorUI"
+        mc:Ignorable="d"
+        Title="Calculator" Height="550" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock 
+            x:Name="OutputTextBlock"
+            Margin="5"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            FontSize="50"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"/>
+
+        <Button x:Name="SevenBtn" 
+                Grid.Row="2"
+                Grid.Column="0"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="7"/>
+        
+        <Button x:Name="EightBtn" 
+                Grid.Row="2"
+                Grid.Column="1"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="8"/>
+
+        <Button x:Name="NinenBtn" 
+                Grid.Row="2"
+                Grid.Column="2"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="9"/>
+        
+        <Button x:Name="FourBtn" 
+                Grid.Row="3"
+                Grid.Column="0"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="4"/>
+
+        <Button x:Name="FiveBtn" 
+                Grid.Row="3"
+                Grid.Column="1"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="5"/>
+
+        <Button x:Name="SixBtn" 
+                Grid.Row="3"
+                Grid.Column="2"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="6"/>
+
+        <Button x:Name="OneBtn" 
+                Grid.Row="4"
+                Grid.Column="0"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="1"/>
+
+        <Button x:Name="TwoBtn" 
+                Grid.Row="4"
+                Grid.Column="1"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="2"/>
+
+        <Button x:Name="ThreeBtn" 
+                Grid.Row="4"
+                Grid.Column="2"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="3"/>
+
+        <Button x:Name="ZeroBtn" 
+                Grid.Row="5"
+                Grid.Column="1"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="0"/>
+
+        <Button x:Name="EqualBtn" 
+                Grid.Row="5"
+                Grid.Column="3"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="="/>
+
+        <Button x:Name="PlusBtn" 
+                Grid.Row="4"
+                Grid.Column="3"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="+"/>
+
+        <Button x:Name="MinusBtn" 
+                Grid.Row="3"
+                Grid.Column="4"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="-"/>
+
+        <Button x:Name="TimesBtn" 
+                Grid.Row="2"
+                Grid.Column="4"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="x"/>
+
+        <Button x:Name="DivideBtn" 
+                Grid.Row="1"
+                Grid.Column="4"
+                FontSize="25"
+                FontWeight="Bold"
+                Content=""/>
+
+        <Button x:Name="CommaBtn" 
+                Grid.Row="5"
+                Grid.Column="2"
+                FontSize="25"
+                FontWeight="Bold"
+                Content=","/>
+
+        <Button x:Name="CBtn" 
+                Grid.Row="5"
+                Grid.Column="0"
+                FontSize="25"
+                FontWeight="Bold"
+                Content="C"/>
+
+        <Button x:Name="SqrtBtn" 
+                Grid.Row="1"
+                Grid.Column="0"
+                FontSize="25"
+                FontWeight="Bold"
+                Content=""/>
+
+        <Button x:Name="PowBtn" 
+                Grid.Row="1"
+                Grid.Column="1"
+                FontSize="25"
+                FontWeight="Bold"
+                Content=""/>
+
+        <Button x:Name="BackspaceBtn" 
+                Grid.Row="1"
+                Grid.Column="2"
+                FontSize="25"
+                FontWeight="Bold"
+                Content=""/>
+        
+    </Grid>
+</Window>
