@@ -2,11 +2,11 @@
 
 namespace nsOperations
 {
-    public class Sum
+    public class Division
     {
         public static double Calculate(double firstNumber, double secondNumber)
         {
-            return firstNumber + secondNumber;
+            return firstNumber / secondNumber;
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace nsIOperations
+namespace nsOperations
 {
-    public class Multiply : IOperations
+    public class Multiply
     {
-        public double Calculate(double firstNumber, double secondNumber)
+        public static double Calculate(double firstNumber, double secondNumber)
         {
             return firstNumber * secondNumber;
         }
