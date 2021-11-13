@@ -49,19 +49,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTestOperations\UnitTestDivision.cs" />
-    <Compile Include="UnitTestOperations\UnitTestMultiply.cs" />
-    <Compile Include="UnitTestOperations\UnitTestPow.cs" />
-    <Compile Include="UnitTestOperations\UnitTestSqrt.cs" />
-    <Compile Include="UnitTestOperations\UnitTestSum.cs" />
+    <Compile Include="UnitTestOperations\TestDisplayNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTestOperations\UnitTestSubstract.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp1\Calculator.csproj">
+    <ProjectReference Include="..\Calculator\Calculator.csproj">
       <Project>{d496aa6c-df56-4653-846d-c1060e76740e}</Project>
       <Name>Calculator</Name>
     </ProjectReference>

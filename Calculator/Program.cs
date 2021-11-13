@@ -11,8 +11,6 @@ namespace nsCalculatorMain
     {
         static void Main(string[] args)
         {
-            Calculator calc = new Calculator();
-            calc.Compute();
         }
     }
 }

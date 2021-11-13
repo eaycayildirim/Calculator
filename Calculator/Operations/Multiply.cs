@@ -1,6 +1,7 @@
 ﻿using System;
+using nsIOperations;
 
-namespace nsIOperations
+namespace nsOperations
 {
     public class Multiply : IOperations
     {
