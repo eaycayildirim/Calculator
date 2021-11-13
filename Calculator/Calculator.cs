@@ -1,6 +1,6 @@
 ﻿using nsIOperations;
 using System;
-using nsResult;
+using nsTextBoxResult;
 using nsDisplayNumber;
 
 namespace nsCalculator
@@ -13,7 +13,7 @@ namespace nsCalculator
         }
 
 
-        private Result _result;
+        private TextBoxResult _result;
         private DisplayNumber _displayNumber;
     }
 }
