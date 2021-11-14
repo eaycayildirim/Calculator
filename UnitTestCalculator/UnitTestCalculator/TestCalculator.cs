@@ -36,14 +36,14 @@ namespace UnitTestCalculator
         public void Calculate_SumTwoNumbers_ReturnsTrue()
         {
             //Arrange
-            _result.Result = 10;
+            _result.ResultString = "10";
             _result.Operation = new Sum();
             _displayNumber.DisplayNumberString = "3";
             var expected = 13;
 
             //Act
             _calculator.Calculate();
-            var actual = _result.Result;
+            var actual = _result.ResultString;
 
             //Assert
             Assert.AreEqual(expected, actual);

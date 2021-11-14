@@ -17,6 +17,7 @@ namespace nsTextBoxResult
         {
             Result = 0;
             Operation = new Sum();
+            ResultString = "";
         }
 
         public void SetOperation(IOperations operation)
@@ -30,7 +31,9 @@ namespace nsTextBoxResult
             return Result;
         }
 
-        public double Result { get; set; }
+        private double Result { get; set; }
+
+        public string ResultString { get; set; }
 
         public IOperations Operation { get; set; }
     }

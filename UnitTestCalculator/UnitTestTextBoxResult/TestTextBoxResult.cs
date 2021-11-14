@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using nsTextBoxResult;
 using nsOperations;
+using System;
 
 namespace UnitTestCalculator
 {
@@ -11,10 +12,10 @@ namespace UnitTestCalculator
         public void Compute_TwoPlusOne_ReturnsThree()
         {
             //Arrange
-            Result = 2;
+            ResultString = "2";
             SetOperation(new Sum());
             var number = 1;
-            var expected = Result + number;
+            var expected = Convert.ToDouble(ResultString) + number;
 
             //Act
             var actual = Compute(number);

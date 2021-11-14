@@ -36,7 +36,7 @@ namespace nsCalculator
 
         public string GetResult()
         {
-            return _result.Result.ToString();
+            return _result.ResultString;
         }
 
         public void DecimalComma()
