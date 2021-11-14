@@ -16,22 +16,22 @@ namespace nsTextBoxResult
         public void Reset()
         {
             Result = 0;
-            _operation = new Sum();
+            Operation = new Sum();
         }
 
         public void SetOperation(IOperations operation)
         {
-            this._operation = operation;
+            this.Operation = operation;
         }
 
         public double Compute(double number)
         {
-            Result = this._operation.Compute(Result, number);
+            Result = this.Operation.Compute(Result, number);
             return Result;
         }
 
         public double Result { get; set; }
 
-        private IOperations _operation;
+        public IOperations Operation { get; set; }
     }
 }

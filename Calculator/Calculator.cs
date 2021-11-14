@@ -7,13 +7,13 @@ namespace nsCalculator
 {
     public class Calculator
     {
-        public Calculator()
+        public Calculator(TextBoxResult textBoxResult, DisplayNumber displayNumber)
         {
-            this._result = new TextBoxResult();
-            this._displayNumber = new DisplayNumber();
+            this._result = textBoxResult;
+            this._displayNumber = displayNumber;
         }
 
-        public void AddNumbers(string number)
+        public void AddChar(char number)
         {
             this._displayNumber.DisplayNumberString += number;
         }
@@ -25,24 +25,21 @@ namespace nsCalculator
 
         public void Calculate()
         {
-            this._result.Compute(this._displayNumber.ParseStringToDouble());
-            //this._displayNumber.ParseDoubleToString(_result.Result);
+            if(!this._displayNumber.DisplayNumberString.Equals(""))
+                this._result.Compute(Convert.ToDouble(this._displayNumber.DisplayNumberString));
         }
 
-        public string UpdateNumber()
+        public string GetDisplayNumber()
         {
             return this._displayNumber.DisplayNumberString;
         }
 
-        public string UpdateResult()
+        public string GetResult()
         {
-            if (_result.Result != 0)
-                return _result.Result.ToString();
-            else
-                return _displayNumber.DisplayNumberString;
+            return _result.Result.ToString();
         }
 
-        public void AddComma()
+        public void DecimalComma()
         {
             this._displayNumber.DecimalComma();
         }
@@ -50,11 +47,6 @@ namespace nsCalculator
         public void Reset()
         {
             this._result.Reset();
-            ResetFirstNumber();
-        }
-
-        public void ResetFirstNumber()
-        {
             this._displayNumber.Reset();
         }
 

@@ -25,22 +25,12 @@ namespace nsDisplayNumber
 
         public string DecimalComma()
         {
-            if(!IsDecimal())
+            if (DisplayNumberString == "")
+                return DisplayNumberString += "0,";
+            if (!IsDecimal())
                 return DisplayNumberString += ',';
             else
                 return DisplayNumberString;
-        }
-
-        public double ParseStringToDouble()
-        {
-            DisplayNumberDouble = Convert.ToDouble(this.DisplayNumberString);
-            return DisplayNumberDouble;
-        }
-
-        public string ParseDoubleToString(double number)
-        {
-            DisplayNumberString = number.ToString();
-            return DisplayNumberString;
         }
 
         public double DisplayNumberDouble { get; set; }
