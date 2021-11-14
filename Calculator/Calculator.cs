@@ -29,6 +29,19 @@ namespace nsCalculator
             //this._displayNumber.ParseDoubleToString(_result.Result);
         }
 
+        public string UpdateNumber()
+        {
+            return this._displayNumber.DisplayNumberString;
+        }
+
+        public string UpdateResult()
+        {
+            if (_result.Result != 0)
+                return _result.Result.ToString();
+            else
+                return _displayNumber.DisplayNumberString;
+        }
+
         public void AddComma()
         {
             this._displayNumber.DecimalComma();

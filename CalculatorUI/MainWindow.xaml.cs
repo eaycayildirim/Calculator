@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using nsCalculator;
+using nsOperations;
 
 namespace CalculatorUI
 {
@@ -29,5 +19,84 @@ namespace CalculatorUI
             PowBtn.Content = "x\u00B2";
             BackspaceBtn.Content = "\u232B";
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.calculator = new Calculator();
+        }
+
+        private Calculator calculator;
+
+        private void OneBtn_Click(object sender, RoutedEventArgs e)
+        {
+            calculator.AddNumbers(OneBtn.Content.ToString());
+            OutputTextBlock.Text = calculator.UpdateNumber();
+        }
+
+        private void TwoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            calculator.AddNumbers(TwoBtn.Content.ToString());
+            OutputTextBlock.Text = calculator.UpdateNumber();
+        }
+
+        private void ThreeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            calculator.AddNumbers(ThreeBtn.Content.ToString());
+            OutputTextBlock.Text = calculator.UpdateNumber();
+        }
+
+        private void FourBtn_Click(object sender, RoutedEventArgs e)
+        {
+            calculator.AddNumbers(FourBtn.Content.ToString());
+            OutputTextBlock.Text = calculator.UpdateNumber();
+        }
+
+        private void FiveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            calculator.AddNumbers(FiveBtn.Content.ToString());
+            OutputTextBlock.Text = calculator.UpdateNumber();
+        }
+
+        private void SixBtn_Click(object sender, RoutedEventArgs e)
+        {
+            calculator.AddNumbers(SixBtn.Content.ToString());
+            OutputTextBlock.Text = calculator.UpdateNumber();
+        }
+
+        private void SevenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            calculator.AddNumbers(SevenBtn.Content.ToString());
+            OutputTextBlock.Text = calculator.UpdateNumber();
+        }
+
+        private void EightBtn_Click(object sender, RoutedEventArgs e)
+        {
+            calculator.AddNumbers(EightBtn.Content.ToString());
+            OutputTextBlock.Text = calculator.UpdateNumber();
+        }
+
+        private void NinenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            calculator.AddNumbers(NinenBtn.Content.ToString());
+            OutputTextBlock.Text = calculator.UpdateNumber();
+        }
+
+        private void CommaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            calculator.AddComma();
+            OutputTextBlock.Text = calculator.UpdateNumber();
+        }
+
+        private void PlusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+            calculator.SetOperation(new Sum());
+            calculator.Calculate();
+            OutputTextBlock.Text = calculator.UpdateResult();
+            calculator.ResetFirstNumber();
+        }
+
+
+        //TODO: At first it should start with zero
     }
 }

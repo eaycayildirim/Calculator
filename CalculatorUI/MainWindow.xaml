@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorUI"
         mc:Ignorable="d"
-        Title="Calculator" Height="550" Width="400">
+        Title="Calculator" Height="550" Width="400" Loaded="Window_Loaded">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -37,63 +37,63 @@
                 Grid.Column="0"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="7"/>
+                Content="7" Click="SevenBtn_Click"/>
         
         <Button x:Name="EightBtn" 
                 Grid.Row="2"
                 Grid.Column="1"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="8"/>
+                Content="8" Click="EightBtn_Click"/>
 
         <Button x:Name="NinenBtn" 
                 Grid.Row="2"
                 Grid.Column="2"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="9"/>
+                Content="9" Click="NinenBtn_Click"/>
         
         <Button x:Name="FourBtn" 
                 Grid.Row="3"
                 Grid.Column="0"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="4"/>
+                Content="4" Click="FourBtn_Click"/>
 
         <Button x:Name="FiveBtn" 
                 Grid.Row="3"
                 Grid.Column="1"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="5"/>
+                Content="5" Click="FiveBtn_Click"/>
 
         <Button x:Name="SixBtn" 
                 Grid.Row="3"
                 Grid.Column="2"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="6"/>
+                Content="6" Click="SixBtn_Click"/>
 
         <Button x:Name="OneBtn" 
                 Grid.Row="4"
                 Grid.Column="0"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="1"/>
+                Content="1" Click="OneBtn_Click"/>
 
         <Button x:Name="TwoBtn" 
                 Grid.Row="4"
                 Grid.Column="1"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="2"/>
+                Content="2" Click="TwoBtn_Click"/>
 
         <Button x:Name="ThreeBtn" 
                 Grid.Row="4"
                 Grid.Column="2"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="3"/>
+                Content="3" Click="ThreeBtn_Click"/>
 
         <Button x:Name="ZeroBtn" 
                 Grid.Row="5"
@@ -114,7 +114,7 @@
                 Grid.Column="3"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="+"/>
+                Content="+" Click="PlusBtn_Click"/>
 
         <Button x:Name="MinusBtn" 
                 Grid.Row="3"
@@ -142,7 +142,7 @@
                 Grid.Column="2"
                 FontSize="25"
                 FontWeight="Bold"
-                Content=","/>
+                Content="," Click="CommaBtn_Click"/>
 
         <Button x:Name="CBtn" 
                 Grid.Row="5"

@@ -26,7 +26,8 @@ namespace nsTextBoxResult
 
         public double Compute(double number)
         {
-            return this._operation.Compute(Result, number);
+            Result = this._operation.Compute(Result, number);
+            return Result;
         }
 
         public double Result { get; set; }
