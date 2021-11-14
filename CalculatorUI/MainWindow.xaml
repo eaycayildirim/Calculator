@@ -121,21 +121,21 @@
                 Grid.Column="4"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="-"/>
+                Content="-" Click="MinusBtn_Click"/>
 
         <Button x:Name="TimesBtn" 
                 Grid.Row="2"
                 Grid.Column="4"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="x"/>
+                Content="x" Click="TimesBtn_Click"/>
 
         <Button x:Name="DivideBtn" 
                 Grid.Row="1"
                 Grid.Column="4"
                 FontSize="25"
                 FontWeight="Bold"
-                Content=""/>
+                Content="" Click="DivideBtn_Click"/>
 
         <Button x:Name="CommaBtn" 
                 Grid.Row="5"
@@ -156,21 +156,21 @@
                 Grid.Column="0"
                 FontSize="25"
                 FontWeight="Bold"
-                Content=""/>
+                Content="" Click="SqrtBtn_Click"/>
 
         <Button x:Name="PowBtn" 
                 Grid.Row="1"
                 Grid.Column="1"
                 FontSize="25"
                 FontWeight="Bold"
-                Content=""/>
+                Content="" Click="PowBtn_Click"/>
 
         <Button x:Name="BackspaceBtn" 
                 Grid.Row="1"
                 Grid.Column="2"
                 FontSize="25"
                 FontWeight="Bold"
-                Content=""/>
+                Content="" Click="BackspaceBtn_Click"/>
         
     </Grid>
 </Window>

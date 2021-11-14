@@ -47,6 +47,11 @@ namespace nsCalculator
         public void Reset()
         {
             this._result.Reset();
+            ResetDisplayNumber();
+        }
+
+        public void ResetDisplayNumber()
+        {
             this._displayNumber.Reset();
         }
 

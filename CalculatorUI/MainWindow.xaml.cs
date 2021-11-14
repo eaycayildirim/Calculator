@@ -4,6 +4,7 @@ using nsCalculator;
 using nsOperations;
 using nsTextBoxResult;
 using nsDisplayNumber;
+using nsIOperations;
 
 namespace CalculatorUI
 {
@@ -24,78 +25,113 @@ namespace CalculatorUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.calculator = new Calculator(new TextBoxResult(), new DisplayNumber());
+            this._calculator = new Calculator(new TextBoxResult(), new DisplayNumber());
         }
 
         private void OneBtn_Click(object sender, RoutedEventArgs e)
         {
-            calculator.AddChar(Convert.ToChar(OneBtn.Content));
-            OutputTextBlock.Text = calculator.GetDisplayNumber();
+            _calculator.AddChar(Convert.ToChar(OneBtn.Content));
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
         private void TwoBtn_Click(object sender, RoutedEventArgs e)
         {
-            calculator.AddChar(Convert.ToChar(TwoBtn.Content));
-            OutputTextBlock.Text = calculator.GetDisplayNumber();
+            _calculator.AddChar(Convert.ToChar(TwoBtn.Content));
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
         private void ThreeBtn_Click(object sender, RoutedEventArgs e)
         {
-            calculator.AddChar(Convert.ToChar(ThreeBtn.Content));
-            OutputTextBlock.Text = calculator.GetDisplayNumber();
+            _calculator.AddChar(Convert.ToChar(ThreeBtn.Content));
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
         private void FourBtn_Click(object sender, RoutedEventArgs e)
         {
-            calculator.AddChar(Convert.ToChar(FourBtn.Content));
-            OutputTextBlock.Text = calculator.GetDisplayNumber();
+            _calculator.AddChar(Convert.ToChar(FourBtn.Content));
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
         private void FiveBtn_Click(object sender, RoutedEventArgs e)
         {
-            calculator.AddChar(Convert.ToChar(FiveBtn.Content));
-            OutputTextBlock.Text = calculator.GetDisplayNumber();
+            _calculator.AddChar(Convert.ToChar(FiveBtn.Content));
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
         private void SixBtn_Click(object sender, RoutedEventArgs e)
         {
-            calculator.AddChar(Convert.ToChar(SixBtn.Content));
-            OutputTextBlock.Text = calculator.GetDisplayNumber();
+            _calculator.AddChar(Convert.ToChar(SixBtn.Content));
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
         private void SevenBtn_Click(object sender, RoutedEventArgs e)
         {
-            calculator.AddChar(Convert.ToChar(SevenBtn.Content));
-            OutputTextBlock.Text = calculator.GetDisplayNumber();
+            _calculator.AddChar(Convert.ToChar(SevenBtn.Content));
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
         private void EightBtn_Click(object sender, RoutedEventArgs e)
         {
-            calculator.AddChar(Convert.ToChar(EightBtn.Content));
-            OutputTextBlock.Text = calculator.GetDisplayNumber();
+            _calculator.AddChar(Convert.ToChar(EightBtn.Content));
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
         private void NinenBtn_Click(object sender, RoutedEventArgs e)
         {
-            calculator.AddChar(Convert.ToChar(NinenBtn.Content));
-            OutputTextBlock.Text = calculator.GetDisplayNumber();
+            _calculator.AddChar(Convert.ToChar(NinenBtn.Content));
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
         private void CommaBtn_Click(object sender, RoutedEventArgs e)
         {
-            calculator.DecimalComma();
-            OutputTextBlock.Text = calculator.GetDisplayNumber();
+            _calculator.DecimalComma();
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+        }
+
+        private void OperationChanged(IOperations operation)
+        {
+            _calculator.SetOperation(operation);
+            _calculator.Calculate();
+            OutputTextBlock.Text = _calculator.GetResult();
+            _calculator.ResetDisplayNumber();
         }
 
         private void PlusBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-            calculator.SetOperation(new Sum());
-            calculator.Calculate();
-            OutputTextBlock.Text = calculator.GetResult();
-            //calculator.ResetFirstNumber();
+            OperationChanged(new Sum());
         }
 
-        private Calculator calculator;
+        private void MinusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OperationChanged(new Substract());
+        }
+
+        private void TimesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OperationChanged(new Multiply());
+        }
+
+        private void DivideBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OperationChanged(new Division());
+        }
+
+        private void PowBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OperationChanged(new Pow());
+        }
+
+        private void SqrtBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OperationChanged(new Sqrt());
+        }
+
+        private void BackspaceBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _calculator.Delete();
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+        }
+
+        private Calculator _calculator;
     }
 }
