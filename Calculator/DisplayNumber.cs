@@ -31,6 +31,18 @@ namespace nsDisplayNumber
                 return DisplayNumberString;
         }
 
+        public double ParseStringToDouble()
+        {
+            DisplayNumberDouble = Convert.ToDouble(this.DisplayNumberString);
+            return DisplayNumberDouble;
+        }
+
+        public string ParseDoubleToString(double number)
+        {
+            DisplayNumberString = number.ToString();
+            return DisplayNumberString;
+        }
+
         public double DisplayNumberDouble { get; set; }
         public string DisplayNumberString { get; set; }
 
