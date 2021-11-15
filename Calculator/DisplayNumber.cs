@@ -15,12 +15,10 @@ namespace nsDisplayNumber
             DisplayNumberString = "";
         }
 
-        public string Delete()
+        public void Delete()
         {
             if(DisplayNumberString.Length > 0)
-                return DisplayNumberString.Remove(DisplayNumberString.Length-1);
-            else
-                return DisplayNumberString;
+                DisplayNumberString = DisplayNumberString.Remove(DisplayNumberString.Length-1);
         }
 
         public string DecimalComma()

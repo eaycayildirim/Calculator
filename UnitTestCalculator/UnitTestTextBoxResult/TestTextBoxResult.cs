@@ -18,10 +18,11 @@ namespace UnitTestCalculator
             var expected = Convert.ToDouble(ResultString) + number;
 
             //Act
-            var actual = Compute(number);
+            Compute(number);
+            var actual = ResultString;
 
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.ToString(), actual);
         }
     }
 }

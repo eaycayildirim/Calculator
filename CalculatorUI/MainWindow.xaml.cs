@@ -82,6 +82,12 @@ namespace CalculatorUI
             OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
+        private void ZeroBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _calculator.AddChar(Convert.ToChar(ZeroBtn.Content));
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+        }
+
         private void CommaBtn_Click(object sender, RoutedEventArgs e)
         {
             _calculator.DecimalComma();
@@ -90,8 +96,8 @@ namespace CalculatorUI
 
         private void OperationChanged(IOperations operation)
         {
-            _calculator.SetOperation(operation);
             _calculator.Calculate();
+            _calculator.SetOperation(operation);
             OutputTextBlock.Text = _calculator.GetResult();
             _calculator.ResetDisplayNumber();
         }
@@ -133,5 +139,11 @@ namespace CalculatorUI
         }
 
         private Calculator _calculator;
+
+        private void CBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _calculator.Reset();
+            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+        }
     }
 }

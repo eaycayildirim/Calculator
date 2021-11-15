@@ -25,10 +25,18 @@ namespace nsTextBoxResult
             this.Operation = operation;
         }
 
-        public double Compute(double number)
+        public void Compute(double number)
         {
-            Result = this.Operation.Compute(Result, number);
-            return Result;
+            if (!ResultString.Equals(""))
+            {
+                Result = Convert.ToDouble(ResultString);
+                Result = this.Operation.Compute(Result, number);
+            }
+            else
+            {
+                Result = number;
+            }
+            ResultString = Result.ToString();
         }
 
         private double Result { get; set; }

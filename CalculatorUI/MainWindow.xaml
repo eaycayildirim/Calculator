@@ -100,7 +100,7 @@
                 Grid.Column="1"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="0"/>
+                Content="0" Click="ZeroBtn_Click"/>
 
         <Button x:Name="EqualBtn" 
                 Grid.Row="5"
@@ -149,7 +149,7 @@
                 Grid.Column="0"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="C"/>
+                Content="C" Click="CBtn_Click"/>
 
         <Button x:Name="SqrtBtn" 
                 Grid.Row="1"

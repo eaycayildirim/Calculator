@@ -46,7 +46,7 @@ namespace UnitTestCalculator
             var actual = _result.ResultString;
 
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.ToString(), actual);
         }
 
         [TestMethod]
@@ -54,7 +54,7 @@ namespace UnitTestCalculator
         {
             //Arrange
             var expectedDisplayNumber = "";
-            var expectedResult = "0";
+            var expectedResultString = "";
 
             //Act
             _calculator.Reset();
@@ -63,7 +63,7 @@ namespace UnitTestCalculator
 
             //Assert
             Assert.AreEqual(expectedDisplayNumber, actualDisplayNumber);
-            Assert.AreEqual(expectedResult, actualResult);
+            Assert.AreEqual(expectedResultString, actualResult);
         }
 
         private Calculator _calculator;
