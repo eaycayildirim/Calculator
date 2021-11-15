@@ -104,31 +104,37 @@ namespace CalculatorUI
 
         private void PlusBtn_Click(object sender, RoutedEventArgs e)
         {
+            GetMemory(PlusBtn.Content);
             OperationChanged(new Sum());
         }
 
         private void MinusBtn_Click(object sender, RoutedEventArgs e)
         {
+            GetMemory(MinusBtn.Content);
             OperationChanged(new Substract());
         }
 
         private void TimesBtn_Click(object sender, RoutedEventArgs e)
         {
+            GetMemory(TimesBtn.Content);
             OperationChanged(new Multiply());
         }
 
         private void DivideBtn_Click(object sender, RoutedEventArgs e)
         {
+            GetMemory(DivideBtn.Content);
             OperationChanged(new Division());
         }
 
         private void PowBtn_Click(object sender, RoutedEventArgs e)
         {
+            GetMemory(PowBtn.Content);
             OperationChanged(new Pow());
         }
 
         private void SqrtBtn_Click(object sender, RoutedEventArgs e)
         {
+            GetMemory(SqrtBtn.Content);
             OperationChanged(new Sqrt());
         }
 
@@ -158,6 +164,12 @@ namespace CalculatorUI
         {
             _calculator.Calculate();
             OutputTextBlock.Text = _calculator.GetResult();
+            MemoryTextBox.Text = "";
+        }
+
+        private void GetMemory(object obj)
+        {
+            MemoryTextBox.Text += OutputTextBlock.Text + obj;
         }
 
         private Calculator _calculator;
