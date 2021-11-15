@@ -154,6 +154,12 @@ namespace CalculatorUI
             _calculator.AddChar(Convert.ToChar(input));
         }
 
+        private void EqualBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _calculator.Calculate();
+            OutputTextBlock.Text = _calculator.GetResult();
+        }
+
         private Calculator _calculator;
     }
 }

@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorUI"
         mc:Ignorable="d"
-        Title="Calculator" Height="550" Width="400" Loaded="Window_Loaded">
+        Title="Calculator" Height="510" Width="350" Loaded="Window_Loaded" Background="#FF2F2F2F" Foreground="White">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -21,156 +21,227 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <TextBlock 
-            x:Name="OutputTextBlock"
-            Margin="5"
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="4"
-            FontSize="50"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="90"/>
+                </Grid.RowDefinitions>
+                <TextBlock 
+                    x:Name="MemoryTextBox"
+                    Grid.Row="0"
+                    Foreground="#FFA8A8A8"
+                    FontSize="20"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"/>
+                <TextBlock 
+                    x:Name="OutputTextBlock"
+                    Grid.Row="1"
+                    FontSize="50"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"/>
+            </Grid>
+        </StackPanel>
 
         <Button x:Name="SevenBtn" 
                 Grid.Row="2"
                 Grid.Column="0"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="7" Click="SevenBtn_Click"/>
-        
+                Background="#FF222121"
+                Foreground="White"
+                Content="7" 
+                Click="SevenBtn_Click"/>
+
         <Button x:Name="EightBtn" 
                 Grid.Row="2"
                 Grid.Column="1"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="8" Click="EightBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="8" 
+                Click="EightBtn_Click"/>
 
         <Button x:Name="NineBtn" 
                 Grid.Row="2"
                 Grid.Column="2"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="9" Click="NineBtn_Click"/>
-        
+                Background="#FF222121"
+                Foreground="White"
+                Content="9" 
+                Click="NineBtn_Click"/>
+
         <Button x:Name="FourBtn" 
                 Grid.Row="3"
                 Grid.Column="0"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="4" Click="FourBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="4" 
+                Click="FourBtn_Click"/>
 
         <Button x:Name="FiveBtn" 
                 Grid.Row="3"
                 Grid.Column="1"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="5" Click="FiveBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="5" 
+                Click="FiveBtn_Click"/>
 
         <Button x:Name="SixBtn" 
                 Grid.Row="3"
                 Grid.Column="2"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="6" Click="SixBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="6" 
+                Click="SixBtn_Click"/>
 
         <Button x:Name="OneBtn" 
                 Grid.Row="4"
                 Grid.Column="0"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="1" Click="OneBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="1" 
+                Click="OneBtn_Click"/>
 
         <Button x:Name="TwoBtn" 
                 Grid.Row="4"
                 Grid.Column="1"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="2" Click="TwoBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="2" 
+                Click="TwoBtn_Click"/>
 
         <Button x:Name="ThreeBtn" 
                 Grid.Row="4"
                 Grid.Column="2"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="3" Click="ThreeBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="3" 
+                Click="ThreeBtn_Click"/>
 
         <Button x:Name="ZeroBtn" 
                 Grid.Row="5"
                 Grid.Column="1"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="0" Click="ZeroBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="0" 
+                Click="ZeroBtn_Click"/>
 
         <Button x:Name="EqualBtn" 
                 Grid.Row="5"
                 Grid.Column="3"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="="/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="=" 
+                Click="EqualBtn_Click"/>
 
         <Button x:Name="PlusBtn" 
                 Grid.Row="4"
                 Grid.Column="3"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="+" Click="PlusBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="+" 
+                Click="PlusBtn_Click"/>
 
         <Button x:Name="MinusBtn" 
                 Grid.Row="3"
                 Grid.Column="4"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="-" Click="MinusBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="-" 
+                Click="MinusBtn_Click"/>
 
         <Button x:Name="TimesBtn" 
                 Grid.Row="2"
                 Grid.Column="4"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="x" Click="TimesBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="x" 
+                Click="TimesBtn_Click"/>
 
         <Button x:Name="DivideBtn" 
                 Grid.Row="1"
                 Grid.Column="4"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="" Click="DivideBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="" 
+                Click="DivideBtn_Click"/>
 
         <Button x:Name="CommaBtn" 
                 Grid.Row="5"
                 Grid.Column="2"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="," Click="CommaBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="," 
+                Click="CommaBtn_Click"/>
 
         <Button x:Name="CBtn" 
                 Grid.Row="5"
                 Grid.Column="0"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="C" Click="CBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="C" 
+                Click="CBtn_Click"/>
 
         <Button x:Name="SqrtBtn" 
                 Grid.Row="1"
                 Grid.Column="0"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="" Click="SqrtBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="" 
+                Click="SqrtBtn_Click"/>
 
         <Button x:Name="PowBtn" 
                 Grid.Row="1"
                 Grid.Column="1"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="" Click="PowBtn_Click"/>
+                Background="#FF222121"
+                Foreground="White"
+                Content="" 
+                Click="PowBtn_Click"/>
 
         <Button x:Name="BackspaceBtn" 
                 Grid.Row="1"
                 Grid.Column="2"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="" Click="BackspaceBtn_Click"/>
-        
+                Background="#FF222121"
+                Foreground="White"
+                Content="" 
+                Click="BackspaceBtn_Click"/>
+
     </Grid>
 </Window>
