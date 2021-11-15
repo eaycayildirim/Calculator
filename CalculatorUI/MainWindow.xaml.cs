@@ -30,68 +30,68 @@ namespace CalculatorUI
 
         private void OneBtn_Click(object sender, RoutedEventArgs e)
         {
-            _calculator.AddChar(Convert.ToChar(OneBtn.Content));
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            AddChar(OneBtn.Content);
+            UpdateTextBox();
         }
 
         private void TwoBtn_Click(object sender, RoutedEventArgs e)
         {
-            _calculator.AddChar(Convert.ToChar(TwoBtn.Content));
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            AddChar(TwoBtn.Content);
+            UpdateTextBox();
         }
 
         private void ThreeBtn_Click(object sender, RoutedEventArgs e)
         {
-            _calculator.AddChar(Convert.ToChar(ThreeBtn.Content));
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            AddChar(ThreeBtn.Content);
+            UpdateTextBox();
         }
 
         private void FourBtn_Click(object sender, RoutedEventArgs e)
         {
-            _calculator.AddChar(Convert.ToChar(FourBtn.Content));
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            AddChar(FourBtn.Content);
+            UpdateTextBox();
         }
 
         private void FiveBtn_Click(object sender, RoutedEventArgs e)
         {
-            _calculator.AddChar(Convert.ToChar(FiveBtn.Content));
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            AddChar(FiveBtn.Content);
+            UpdateTextBox();
         }
 
         private void SixBtn_Click(object sender, RoutedEventArgs e)
         {
-            _calculator.AddChar(Convert.ToChar(SixBtn.Content));
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            AddChar(SixBtn.Content);
+            UpdateTextBox();
         }
 
         private void SevenBtn_Click(object sender, RoutedEventArgs e)
         {
-            _calculator.AddChar(Convert.ToChar(SevenBtn.Content));
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            AddChar(SevenBtn.Content);
+            UpdateTextBox();
         }
 
         private void EightBtn_Click(object sender, RoutedEventArgs e)
         {
-            _calculator.AddChar(Convert.ToChar(EightBtn.Content));
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            AddChar(EightBtn.Content);
+            UpdateTextBox();
         }
 
-        private void NinenBtn_Click(object sender, RoutedEventArgs e)
+        private void NineBtn_Click(object sender, RoutedEventArgs e)
         {
-            _calculator.AddChar(Convert.ToChar(NinenBtn.Content));
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            AddChar(NineBtn.Content);
+            UpdateTextBox();
         }
 
         private void ZeroBtn_Click(object sender, RoutedEventArgs e)
         {
-            _calculator.AddChar(Convert.ToChar(ZeroBtn.Content));
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            AddChar(ZeroBtn.Content);
+            UpdateTextBox();
         }
 
         private void CommaBtn_Click(object sender, RoutedEventArgs e)
         {
             _calculator.DecimalComma();
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            UpdateTextBox();
         }
 
         private void OperationChanged(IOperations operation)
@@ -135,15 +135,25 @@ namespace CalculatorUI
         private void BackspaceBtn_Click(object sender, RoutedEventArgs e)
         {
             _calculator.Delete();
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            UpdateTextBox();
         }
-
-        private Calculator _calculator;
 
         private void CBtn_Click(object sender, RoutedEventArgs e)
         {
             _calculator.Reset();
+            UpdateTextBox();
+        }
+
+        private void UpdateTextBox()
+        {
             OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
+
+        private void AddChar(object input)
+        {
+            _calculator.AddChar(Convert.ToChar(input));
+        }
+
+        private Calculator _calculator;
     }
 }

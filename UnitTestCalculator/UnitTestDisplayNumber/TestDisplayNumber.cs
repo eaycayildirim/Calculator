@@ -14,7 +14,8 @@ namespace UnitTestCalculator
             var expected = "12";
 
             //Act
-            var actual = Delete();
+            Delete();
+            var actual = DisplayNumberString;
 
             //Assert
             Assert.AreEqual(expected, actual);

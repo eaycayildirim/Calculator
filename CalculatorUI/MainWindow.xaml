@@ -46,12 +46,12 @@
                 FontWeight="Bold"
                 Content="8" Click="EightBtn_Click"/>
 
-        <Button x:Name="NinenBtn" 
+        <Button x:Name="NineBtn" 
                 Grid.Row="2"
                 Grid.Column="2"
                 FontSize="25"
                 FontWeight="Bold"
-                Content="9" Click="NinenBtn_Click"/>
+                Content="9" Click="NineBtn_Click"/>
         
         <Button x:Name="FourBtn" 
                 Grid.Row="3"
