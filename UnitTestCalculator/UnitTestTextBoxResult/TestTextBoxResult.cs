@@ -9,6 +9,21 @@ namespace UnitTestCalculator
     public class TestTextBoxResult : TextBoxResult
     {
         [TestMethod]
+        public void Reset_ResetResultString()
+        {
+            //Arrange
+            ResultString = "2";
+            var expectedResultString = "";
+
+            //Act
+            Reset();
+            var actualResultString = ResultString;
+
+            //Assert
+            Assert.AreEqual(expectedResultString, actualResultString);
+        }
+
+        [TestMethod]
         public void Compute_TwoPlusOne_ReturnsThree()
         {
             //Arrange

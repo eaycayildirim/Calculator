@@ -7,7 +7,7 @@ namespace nsOperations
     {
         public double Compute(double firstNumber, double secondNumber = 2d)
         {
-            return Math.Pow(firstNumber, 1/secondNumber);
+            return Math.Pow(firstNumber, 1 / secondNumber);
         }
     }
 }

@@ -22,6 +22,35 @@ namespace UnitTestCalculator
         }
 
         [TestMethod]
+        public void Reset_ResetDisplayNumberString()
+        {
+            //Arrange
+            DisplayNumberString = "12,3";
+            var expected = "";
+
+            //Act
+            Reset();
+            var actual = DisplayNumberString;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void DecimalComma_EmptyNumber_ZeroAndCommaAdded()
+        {
+            //Arrange
+            DisplayNumberString = "";
+            var expected = "0,";
+
+            //Act
+            var actual = DecimalComma();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void DecimalComma_NonDecimalNumber_CommaIsAdded()
         {
             //Arrange

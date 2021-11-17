@@ -148,6 +148,7 @@ namespace CalculatorUI
         {
             _calculator.Reset();
             UpdateTextBox();
+            MemoryTextBox.Text = "";
         }
 
         private void UpdateTextBox()
@@ -164,6 +165,7 @@ namespace CalculatorUI
         {
             _calculator.Calculate();
             OutputTextBlock.Text = _calculator.GetResult();
+            //_calculator.ResetDisplayNumber();
             MemoryTextBox.Text = "";
         }
 
@@ -173,5 +175,10 @@ namespace CalculatorUI
         }
 
         private Calculator _calculator;
+
+        //TODO: Sqrt, Pow is not working
+        //TODO: Something is wrong when you keep pressing operations
+        //TODO: Something is wrong if you press an operation after equals
+        //TODO: Can't change the operation
     }
 }

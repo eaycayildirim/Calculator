@@ -11,7 +11,6 @@ namespace nsDisplayNumber
 
         public void Reset()
         {
-            DisplayNumberDouble = 0;
             DisplayNumberString = "";
         }
 
@@ -31,7 +30,6 @@ namespace nsDisplayNumber
                 return DisplayNumberString;
         }
 
-        public double DisplayNumberDouble { get; set; }
         public string DisplayNumberString { get; set; }
 
         private bool IsDecimal()
