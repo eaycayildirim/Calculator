@@ -1,13 +1,13 @@
-﻿using nsIOperations;
+﻿using nsOperations;
 using System;
-using nsTextBoxResult;
+using nsResultNumber;
 using nsDisplayNumber;
 
 namespace nsCalculator
 {
     public class Calculator
     {
-        public Calculator(TextBoxResult textBoxResult, DisplayNumber displayNumber)
+        public Calculator(ref ResultNumber textBoxResult, ref DisplayNumber displayNumber)
         {
             this._result = textBoxResult;
             this._displayNumber = displayNumber;
@@ -18,7 +18,7 @@ namespace nsCalculator
             this._displayNumber.DisplayNumberString += number;
         }
 
-        public void SetOperation(IOperations operation)
+        public void SetOperation(Operations operation)
         {
             this._result.SetOperation(operation);
         }
@@ -55,12 +55,12 @@ namespace nsCalculator
             this._displayNumber.Reset();
         }
 
-        public void Delete()
+        public void DeleteLastNumber()
         {
             this._displayNumber.Delete();
         }
 
-        private TextBoxResult _result;
+        private ResultNumber _result;
         private DisplayNumber _displayNumber;
     }
 }

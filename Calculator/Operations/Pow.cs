@@ -1,11 +1,15 @@
 ﻿using System;
-using nsIOperations;
+using nsOperations;
 
 namespace nsOperations
 {
-    public class Pow : IOperations
+    public class Pow : Operations
     {
-        public double Compute(double firstNumber, double secondNumber = 2d)
+        public Pow() : base(new OperationData(false, false, "x\u00B2"))
+        {
+        }
+
+        public override double Compute(double firstNumber, double secondNumber = 2d)
         {
             return Math.Pow(firstNumber, secondNumber);
         }

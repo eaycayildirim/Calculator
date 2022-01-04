@@ -1,17 +1,17 @@
 ﻿using System;
-using nsIOperations;
 using nsOperations;
 
-namespace nsTextBoxResult
+namespace nsResultNumber
 {
-    public class TextBoxResult
+    public class ResultNumber
     {
-        public TextBoxResult()
+        public ResultNumber(string str = "")
         {
+            ResultString = str;
             Reset();
         }
 
-        ~TextBoxResult() { }
+        ~ResultNumber() { }
 
         public void Reset()
         {
@@ -20,7 +20,7 @@ namespace nsTextBoxResult
             ResultString = "";
         }
 
-        public void SetOperation(IOperations operation)
+        public void SetOperation(Operations operation)
         {
             this.Operation = operation;
         }
@@ -43,6 +43,6 @@ namespace nsTextBoxResult
 
         public string ResultString { get; set; }
 
-        public IOperations Operation { get; set; }
+        public Operations Operation { get; set; }
     }
 }

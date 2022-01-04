@@ -4,8 +4,9 @@ namespace nsDisplayNumber
 {
     public class DisplayNumber
     {
-        public DisplayNumber()
+        public DisplayNumber(string str = "")
         {
+            DisplayNumberString = str;
             Reset();
         }
 

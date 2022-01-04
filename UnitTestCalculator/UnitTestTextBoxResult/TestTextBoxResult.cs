@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using nsTextBoxResult;
+using nsResultNumber;
 using nsOperations;
 using System;
 
 namespace UnitTestCalculator
 {
     [TestClass]
-    public class TestTextBoxResult : TextBoxResult
+    public class TestTextBoxResult : ResultNumber
     {
         [TestMethod]
         public void Reset_ResetResultString()

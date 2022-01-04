@@ -1,11 +1,14 @@
-﻿using System;
-using nsIOperations;
+﻿using nsOperations;
 
 namespace nsOperations
 {
-    public class Division : IOperations
+    public class Division : Operations
     {
-        public double Compute(double firstNumber, double secondNumber)
+        public Division() : base(new OperationData(true, true, "\u00F7")) 
+        {
+        }
+
+        public override double Compute(double firstNumber, double secondNumber)
         {
             return firstNumber / secondNumber;
         }

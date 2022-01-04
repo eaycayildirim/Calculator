@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using nsCalculator;
-using nsTextBoxResult;
+using nsResultNumber;
 using nsDisplayNumber;
 using nsOperations;
 
@@ -9,18 +9,19 @@ namespace UnitTestCalculator
     [TestClass]
     public class TestCalculator
     {
-        [TestInitialize]
-        public void Initialize()
+
+        public void SetUp(ResultNumber result, DisplayNumber displayNumber)
         {
-            _result = new TextBoxResult();
-            _displayNumber = new DisplayNumber();
-            _calculator = new Calculator(_result, _displayNumber);
+            this._result = result;
+            this._displayNumber = displayNumber;
+            this._calculator = new Calculator(ref result, ref displayNumber);
         }
 
         [TestMethod]
         public void AddChar_Char_IsAdded()
         {
             //Arrange
+            SetUp(new ResultNumber("10"), new DisplayNumber(""));
             var numberToAdd = '2';
             _calculator.AddChar(numberToAdd);
             var expected = "2";
@@ -36,9 +37,8 @@ namespace UnitTestCalculator
         public void Calculate_SumTwoNumbers_ReturnsTrue()
         {
             //Arrange
-            _result.ResultString = "10";
+            SetUp(new ResultNumber("10"), new DisplayNumber("3"));
             _result.Operation = new Sum();
-            _displayNumber.DisplayNumberString = "3";
             var expected = 13;
 
             //Act
@@ -53,6 +53,7 @@ namespace UnitTestCalculator
         public void Reset_ResetTheResultAndTheDisplayNumber()
         {
             //Arrange
+            SetUp(new ResultNumber(""), new DisplayNumber(""));
             var expectedDisplayNumber = "";
             var expectedResultString = "";
 
@@ -67,7 +68,7 @@ namespace UnitTestCalculator
         }
 
         private Calculator _calculator;
-        private TextBoxResult _result;
+        private ResultNumber _result;
         private DisplayNumber _displayNumber;
     }
 }

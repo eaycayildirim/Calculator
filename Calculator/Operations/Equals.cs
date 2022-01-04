@@ -1,11 +1,14 @@
-﻿using System;
-using nsIOperations;
+﻿using nsOperations;
 
 namespace nsOperations
 {
-    public class Equals : IOperations
+    public class Equals : Operations
     {
-        public double Compute(double firstNumber, double secondNumber = 0)
+        public Equals() : base(new OperationData(true, false, "="))
+        {
+        }
+
+        public override double Compute(double firstNumber, double secondNumber = 0)
         {
             return firstNumber;
         }

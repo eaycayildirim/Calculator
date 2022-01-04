@@ -1,11 +1,14 @@
-﻿using System;
-using nsIOperations;
+﻿using nsOperations;
 
 namespace nsOperations
 {
-    public class Sum : IOperations
+    public class Sum : Operations
     {
-        public double Compute(double firstNumber, double secondNumber)
+        public Sum() : base(new OperationData(true, true, "+"))
+        {
+        }
+
+        public override double Compute(double firstNumber, double secondNumber)
         {
             return firstNumber + secondNumber;
         }

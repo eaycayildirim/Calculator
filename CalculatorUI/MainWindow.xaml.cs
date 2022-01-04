@@ -2,9 +2,8 @@
 using System.Windows;
 using nsCalculator;
 using nsOperations;
-using nsTextBoxResult;
+using nsResultNumber;
 using nsDisplayNumber;
-using nsIOperations;
 
 namespace CalculatorUI
 {
@@ -16,16 +15,27 @@ namespace CalculatorUI
         public MainWindow()
         {
             InitializeComponent();
-
-            DivideBtn.Content = "\u00F7";
-            SqrtBtn.Content = "\u221A";
-            PowBtn.Content = "x\u00B2";
-            BackspaceBtn.Content = "\u232B";
+            InitializeSymbols();
+            InitializeCalculator();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public void InitializeSymbols()
         {
-            this._calculator = new Calculator(new TextBoxResult(), new DisplayNumber());
+            BackspaceBtn.Content = "\u232B";
+            PlusBtn.Content = new Sum().GetOperationData().symbol;
+            MinusBtn.Content = new Substract().GetOperationData().symbol;
+            DivideBtn.Content = new Division().GetOperationData().symbol;
+            TimesBtn.Content = new Multiply().GetOperationData().symbol;
+            SqrtBtn.Content = new Sqrt().GetOperationData().symbol;
+            PowBtn.Content = new Pow().GetOperationData().symbol;
+            EqualBtn.Content = new Equals().GetOperationData().symbol;
+        }
+
+        public void InitializeCalculator()
+        {
+            var textBoxResult = new ResultNumber();
+            var displayNumber = new DisplayNumber();
+            this._calculator = new Calculator(ref textBoxResult, ref displayNumber);
         }
 
         private void OneBtn_Click(object sender, RoutedEventArgs e)
@@ -94,7 +104,7 @@ namespace CalculatorUI
             UpdateTextBox();
         }
 
-        private void OperationChanged(IOperations operation)
+        private void OperationChanged(Operations operation)
         {
             _calculator.Calculate();
             _calculator.SetOperation(operation);
@@ -140,7 +150,7 @@ namespace CalculatorUI
 
         private void BackspaceBtn_Click(object sender, RoutedEventArgs e)
         {
-            _calculator.Delete();
+            _calculator.DeleteLastNumber();
             UpdateTextBox();
         }
 
