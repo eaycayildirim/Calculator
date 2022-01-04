@@ -6,36 +6,36 @@ namespace nsDisplayNumber
     {
         public DisplayNumber(string str = "")
         {
-            DisplayNumberString = str;
+            Number = str;
             Reset();
         }
 
         public void Reset()
         {
-            DisplayNumberString = "";
+            Number = "";
         }
 
         public void Delete()
         {
-            if(DisplayNumberString.Length > 0)
-                DisplayNumberString = DisplayNumberString.Remove(DisplayNumberString.Length-1);
+            if(Number.Length > 0)
+                Number = Number.Remove(Number.Length-1);
         }
 
         public string DecimalComma()
         {
-            if (DisplayNumberString == "")
-                return DisplayNumberString += "0,";
+            if (Number == "")
+                return Number += "0,";
             if (!IsDecimal())
-                return DisplayNumberString += ',';
+                return Number += ',';
             else
-                return DisplayNumberString;
+                return Number;
         }
 
-        public string DisplayNumberString { get; set; }
+        public string Number { get; set; }
 
         private bool IsDecimal()
         {
-            return DisplayNumberString.Contains(",");
+            return Number.Contains(",");
         }
     }
 }

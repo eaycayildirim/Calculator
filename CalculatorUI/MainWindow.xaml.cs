@@ -104,7 +104,7 @@ namespace CalculatorUI
             UpdateTextBox();
         }
 
-        private void OperationChanged(Operations operation)
+        private void PressOperation(Operations operation)
         {
             _calculator.Calculate();
             _calculator.SetOperation(operation);
@@ -115,37 +115,37 @@ namespace CalculatorUI
         private void PlusBtn_Click(object sender, RoutedEventArgs e)
         {
             GetMemory(PlusBtn.Content);
-            OperationChanged(new Sum());
+            PressOperation(new Sum());
         }
 
         private void MinusBtn_Click(object sender, RoutedEventArgs e)
         {
             GetMemory(MinusBtn.Content);
-            OperationChanged(new Substract());
+            PressOperation(new Substract());
         }
 
         private void TimesBtn_Click(object sender, RoutedEventArgs e)
         {
             GetMemory(TimesBtn.Content);
-            OperationChanged(new Multiply());
+            PressOperation(new Multiply());
         }
 
         private void DivideBtn_Click(object sender, RoutedEventArgs e)
         {
             GetMemory(DivideBtn.Content);
-            OperationChanged(new Division());
+            PressOperation(new Division());
         }
 
         private void PowBtn_Click(object sender, RoutedEventArgs e)
         {
             GetMemory(PowBtn.Content);
-            OperationChanged(new Pow());
+            PressOperation(new Pow());
         }
 
         private void SqrtBtn_Click(object sender, RoutedEventArgs e)
         {
             GetMemory(SqrtBtn.Content);
-            OperationChanged(new Sqrt());
+            PressOperation(new Sqrt());
         }
 
         private void BackspaceBtn_Click(object sender, RoutedEventArgs e)
@@ -175,7 +175,6 @@ namespace CalculatorUI
         {
             _calculator.Calculate();
             OutputTextBlock.Text = _calculator.GetResult();
-            //_calculator.ResetDisplayNumber();
             MemoryTextBox.Text = "";
         }
 

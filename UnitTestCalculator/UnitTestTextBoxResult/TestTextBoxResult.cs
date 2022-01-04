@@ -23,21 +23,21 @@ namespace UnitTestCalculator
             Assert.AreEqual(expectedResultString, actualResultString);
         }
 
-        [TestMethod]
-        public void Compute_TwoPlusOne_ReturnsThree()
-        {
-            //Arrange
-            ResultString = "2";
-            SetOperation(new Sum());
-            var number = 1;
-            var expected = Convert.ToDouble(ResultString) + number;
+        //[TestMethod]
+        //public void Compute_TwoPlusOne_ReturnsThree()
+        //{
+        //    Arrange
+        //    ResultString = "2";
+        //    SetOperation(new Sum());
+        //    var number = 1;
+        //    var expected = Convert.ToDouble(ResultString) + number;
 
-            //Act
-            Compute(number);
-            var actual = ResultString;
+        //    Act
+        //    Compute(number);
+        //    var actual = ResultString;
 
-            //Assert
-            Assert.AreEqual(expected.ToString(), actual);
-        }
+        //    Assert
+        //    Assert.AreEqual(expected.ToString(), actual);
+        //}
     }
 }

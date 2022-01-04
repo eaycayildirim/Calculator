@@ -20,11 +20,6 @@ namespace nsResultNumber
             ResultString = "";
         }
 
-        public void SetOperation(Operations operation)
-        {
-            this.Operation = operation;
-        }
-
         public void Compute(double number)
         {
             if (!ResultString.Equals(""))

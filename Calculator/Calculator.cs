@@ -15,23 +15,26 @@ namespace nsCalculator
 
         public void AddChar(char number)
         {
-            this._displayNumber.DisplayNumberString += number;
+            this._displayNumber.Number += number;
         }
 
         public void SetOperation(Operations operation)
         {
-            this._result.SetOperation(operation);
+            if (operation.GetOperationData()._isOperationChanged)
+            {
+                this._result.Operation = operation;
+            }
         }
 
         public void Calculate()
         {
-            if(!this._displayNumber.DisplayNumberString.Equals(""))
-                this._result.Compute(Convert.ToDouble(this._displayNumber.DisplayNumberString));
+            if(!this._displayNumber.Number.Equals(""))
+                this._result.Compute(Convert.ToDouble(this._displayNumber.Number));
         }
 
         public string GetDisplayNumber()
         {
-            return this._displayNumber.DisplayNumberString;
+            return this._displayNumber.Number;
         }
 
         public string GetResult()
