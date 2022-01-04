@@ -52,7 +52,7 @@
     <Compile Include="UnitTestCalculator\TestCalculator.cs" />
     <Compile Include="UnitTestDisplayNumber\TestDisplayNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTestTextBoxResult\TestTextBoxResult.cs" />
+    <Compile Include="UnitTestResultNumber\TestResultNumber.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

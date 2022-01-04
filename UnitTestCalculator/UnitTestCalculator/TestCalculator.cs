@@ -43,7 +43,7 @@ namespace UnitTestCalculator
 
             //Act
             _calculator.Calculate();
-            var actual = _result.ResultString;
+            var actual = _result.Number;
 
             //Assert
             Assert.AreEqual(expected.ToString(), actual);

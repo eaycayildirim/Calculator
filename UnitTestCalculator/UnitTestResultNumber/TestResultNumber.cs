@@ -6,18 +6,18 @@ using System;
 namespace UnitTestCalculator
 {
     [TestClass]
-    public class TestTextBoxResult : ResultNumber
+    public class TestResultNumber : ResultNumber
     {
         [TestMethod]
         public void Reset_ResetResultString()
         {
             //Arrange
-            ResultString = "2";
+            Number = "2";
             var expectedResultString = "";
 
             //Act
             Reset();
-            var actualResultString = ResultString;
+            var actualResultString = Number;
 
             //Assert
             Assert.AreEqual(expectedResultString, actualResultString);

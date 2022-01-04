@@ -1,4 +1,5 @@
 ﻿using System;
+using nsOperations;
 
 namespace nsDisplayNumber
 {
@@ -10,12 +11,21 @@ namespace nsDisplayNumber
             Reset();
         }
 
+        public void Compute(Operations operation)
+        {
+            if(operation != new Undefined() && !operation.GetOperationData()._isResultAffected) //Is undefined necessary?
+            {
+                var result = operation.Compute(Convert.ToDouble(Number), 2);
+                Number = result.ToString();
+            }
+        }
+
         public void Reset()
         {
             Number = "";
         }
 
-        public void Delete()
+        public void DeleteLastNumber()
         {
             if(Number.Length > 0)
                 Number = Number.Remove(Number.Length-1);

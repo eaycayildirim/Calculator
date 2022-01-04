@@ -41,13 +41,15 @@ namespace nsCalculator
             SetOperation(operation);
             if (!_isOperationPressed || operation == new Equals())
             {
-                Compute();
+                Compute(operation);
             }
         }
 
-        public void Compute()
+        public void Compute(Operations operation)
         {
-
+            _displayNumber.Compute(operation);
+            _result.Compute(operation, ref _displayNumber);
+            _isOperationPressed = false;
         }
 
         public string GetDisplayNumber()
@@ -57,7 +59,7 @@ namespace nsCalculator
 
         public string GetResult()
         {
-            return _result.ResultString;
+            return _result.Number;
         }
 
         public void DecimalComma()
@@ -78,7 +80,7 @@ namespace nsCalculator
 
         public void DeleteLastNumber()
         {
-            this._displayNumber.Delete();
+            this._displayNumber.DeleteLastNumber();
         }
 
         private ResultNumber _result;
