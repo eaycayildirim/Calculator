@@ -1,6 +1,4 @@
-﻿using nsOperations;
-
-namespace nsOperations
+﻿namespace nsOperations
 {
     public class Multiply : Operations
     {

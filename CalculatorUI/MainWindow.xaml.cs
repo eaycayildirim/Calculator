@@ -40,61 +40,61 @@ namespace CalculatorUI
 
         private void OneBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(OneBtn.Content);
+            PressChar(OneBtn.Content);
             UpdateTextBox();
         }
 
         private void TwoBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(TwoBtn.Content);
+            PressChar(TwoBtn.Content);
             UpdateTextBox();
         }
 
         private void ThreeBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(ThreeBtn.Content);
+            PressChar(ThreeBtn.Content);
             UpdateTextBox();
         }
 
         private void FourBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(FourBtn.Content);
+            PressChar(FourBtn.Content);
             UpdateTextBox();
         }
 
         private void FiveBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(FiveBtn.Content);
+            PressChar(FiveBtn.Content);
             UpdateTextBox();
         }
 
         private void SixBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(SixBtn.Content);
+            PressChar(SixBtn.Content);
             UpdateTextBox();
         }
 
         private void SevenBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(SevenBtn.Content);
+            PressChar(SevenBtn.Content);
             UpdateTextBox();
         }
 
         private void EightBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(EightBtn.Content);
+            PressChar(EightBtn.Content);
             UpdateTextBox();
         }
 
         private void NineBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(NineBtn.Content);
+            PressChar(NineBtn.Content);
             UpdateTextBox();
         }
 
         private void ZeroBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(ZeroBtn.Content);
+            PressChar(ZeroBtn.Content);
             UpdateTextBox();
         }
 
@@ -107,7 +107,6 @@ namespace CalculatorUI
         private void PressOperation(Operations operation)
         {
             _calculator.Calculate();
-            _calculator.SetOperation(operation);
             OutputTextBlock.Text = _calculator.GetResult();
             _calculator.ResetDisplayNumber();
         }
@@ -166,16 +165,16 @@ namespace CalculatorUI
             OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
-        private void AddChar(object input)
-        {
-            _calculator.AddChar(Convert.ToChar(input));
-        }
-
         private void EqualBtn_Click(object sender, RoutedEventArgs e)
         {
             _calculator.Calculate();
             OutputTextBlock.Text = _calculator.GetResult();
             MemoryTextBox.Text = "";
+        }
+
+        public void PressChar(object obj)
+        {
+            _calculator.PressChar(Convert.ToChar(obj));
         }
 
         private void GetMemory(object obj)

@@ -26,10 +26,28 @@ namespace nsCalculator
             }
         }
 
-        public void Calculate()
+        public void PressChar(char number)
         {
-            if(!this._displayNumber.Number.Equals(""))
-                this._result.Compute(Convert.ToDouble(this._displayNumber.Number));
+            if (_isOperationPressed)
+            {
+                ResetDisplayNumber();
+                _isOperationPressed = false;
+            }
+            AddChar(number);
+        }
+
+        public void Calculate(Operations operation)
+        {
+            SetOperation(operation);
+            if (!_isOperationPressed || operation == new Equals())
+            {
+                Compute();
+            }
+        }
+
+        public void Compute()
+        {
+
         }
 
         public string GetDisplayNumber()
@@ -65,5 +83,6 @@ namespace nsCalculator
 
         private ResultNumber _result;
         private DisplayNumber _displayNumber;
+        private bool _isOperationPressed = false;
     }
 }
