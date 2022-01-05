@@ -14,7 +14,7 @@ namespace UnitTestCalculator
             var expected = "12";
 
             //Act
-            Delete();
+            DeleteLastNumber();
             var actual = Number;
 
             //Assert

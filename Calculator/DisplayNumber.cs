@@ -1,5 +1,6 @@
 ﻿using System;
 using nsOperations;
+using nsUtility;
 
 namespace nsDisplayNumber
 {
@@ -8,7 +9,11 @@ namespace nsDisplayNumber
         public DisplayNumber(string str = "")
         {
             Number = str;
-            Reset();
+        }
+
+        public double ToDouble()
+        {
+            return Conversions.TryParseToDouble(Number);
         }
 
         public void Compute(Operations operation)

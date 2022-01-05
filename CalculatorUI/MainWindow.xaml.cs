@@ -106,45 +106,48 @@ namespace CalculatorUI
 
         private void PressOperation(Operations operation)
         {
-            _calculator.Calculate();
-            OutputTextBlock.Text = _calculator.GetResult();
-            _calculator.ResetDisplayNumber();
+            var preResult = _calculator.GetResult();
+            _calculator.Calculate(operation);
+            var result = _calculator.GetResult();
+            var displayNumber = _calculator.GetDisplayNumber();
+            var display = operation.GetOperationData()._isResultAffected ? result : displayNumber;
+            OutputTextBlock.Text = display;
+            UpdateMemory(operation, preResult, result, displayNumber);
         }
 
         private void PlusBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(PlusBtn.Content);
             PressOperation(new Sum());
         }
 
         private void MinusBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(MinusBtn.Content);
             PressOperation(new Substract());
         }
 
         private void TimesBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(TimesBtn.Content);
             PressOperation(new Multiply());
         }
 
         private void DivideBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(DivideBtn.Content);
             PressOperation(new Division());
         }
 
         private void PowBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(PowBtn.Content);
             PressOperation(new Pow());
         }
 
         private void SqrtBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(SqrtBtn.Content);
             PressOperation(new Sqrt());
+        }
+
+        private void EqualBtn_Click(object sender, RoutedEventArgs e)
+        {
+            PressOperation(new Equals());
         }
 
         private void BackspaceBtn_Click(object sender, RoutedEventArgs e)
@@ -157,7 +160,7 @@ namespace CalculatorUI
         {
             _calculator.Reset();
             UpdateTextBox();
-            MemoryTextBox.Text = "";
+            ResetMemoryTextBox();
         }
 
         private void UpdateTextBox()
@@ -165,28 +168,24 @@ namespace CalculatorUI
             OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
-        private void EqualBtn_Click(object sender, RoutedEventArgs e)
-        {
-            _calculator.Calculate();
-            OutputTextBlock.Text = _calculator.GetResult();
-            MemoryTextBox.Text = "";
-        }
-
         public void PressChar(object obj)
         {
             _calculator.PressChar(Convert.ToChar(obj));
         }
 
-        private void GetMemory(object obj)
+        private void ResetMemoryTextBox()
         {
-            MemoryTextBox.Text += OutputTextBlock.Text + obj;
+            MemoryTextBox.Text = "";
+        }
+
+        private void UpdateMemory(Operations operation, string preResult, string result, string displayNumber)
+        {
+            if(operation == new Equals())
+                MemoryTextBox.Text = preResult + displayNumber + operation.GetOperationData().symbol;
+            else
+                MemoryTextBox.Text = preResult + operation.GetOperationData().symbol;
         }
 
         private Calculator _calculator;
-
-        //TODO: Sqrt, Pow is not working
-        //TODO: Something is wrong when you keep pressing operations
-        //TODO: Something is wrong if you press an operation after equals
-        //TODO: Can't change the operation
     }
 }

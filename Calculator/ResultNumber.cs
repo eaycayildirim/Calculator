@@ -28,7 +28,7 @@ namespace nsResultNumber
 
                 if(this.Number != "" || operation != new Equals())
                 {
-                    var newResult = resultOperation.Compute(Convert.ToDouble(Number), Convert.ToDouble(displayNumber));
+                    var newResult = resultOperation.Compute(Convert.ToDouble(Number), displayNumber.ToDouble());
                     Number = newResult.ToString();
                 }
                 else
