@@ -14,7 +14,7 @@ namespace UnitTestCalculator
         {
             this._result = result;
             this._displayNumber = displayNumber;
-            this._calculator = new Calculator(ref result, ref displayNumber);
+            this._calculator = new Calculator(ref _result, ref _displayNumber);
         }
 
         [TestMethod]
@@ -34,19 +34,175 @@ namespace UnitTestCalculator
         }
 
         [TestMethod]
-        public void Calculate_SumTwoNumbers_ReturnsTrue()
+        public void Compute_SumTenAndThree_ReturnsThirteen()
         {
             //Arrange
             SetUp(new ResultNumber("10"), new DisplayNumber("3"));
-            _result.Operation = new Sum();
-            var expected = 13;
+            var operation = new Sum();
+            var expected = "13";
 
             //Act
-            _calculator.Calculate();
-            var actual = _result.ResultString;
+            _calculator.Calculate(operation);
+            var actual = _calculator.GetResult();
 
             //Assert
-            Assert.AreEqual(expected.ToString(), actual);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Compute_SubstractTenAndThree_ReturnsSeven()
+        {
+            //Arrange
+            SetUp(new ResultNumber("10"), new DisplayNumber("3"));
+            var operation = new Substract();
+            var expected = "7";
+
+            //Act
+            _calculator.Calculate(operation);
+            var actual = _calculator.GetResult();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Compute_DivisionTenAndFive_ReturnsTwo()
+        {
+            //Arrange
+            SetUp(new ResultNumber("10"), new DisplayNumber("5"));
+            var operation = new Division();
+            var expected = "2";
+
+            //Act
+            _calculator.Calculate(operation);
+            var actual = _calculator.GetResult();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Compute_MultiplyTwoAndFive_ReturnsTen()
+        {
+            //Arrange
+            SetUp(new ResultNumber("2"), new DisplayNumber("5"));
+            var operation = new Multiply();
+            var expected = "10";
+
+            //Act
+            _calculator.Calculate(operation);
+            var actual = _calculator.GetResult();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Compute_PowOfThree_ReturnsNine()
+        {
+            //Arrange
+            SetUp(new ResultNumber("10"), new DisplayNumber("3"));
+            var operation = new Pow();
+            var expected = "9";
+
+            //Act
+            _calculator.Calculate(operation);
+            var actual = _calculator.GetDisplayNumber();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Compute_SqrtOfNine_ReturnsThree()
+        {
+            //Arrange
+            SetUp(new ResultNumber("10"), new DisplayNumber("9"));
+            var operation = new Sqrt();
+            var expected = "3";
+
+            //Act
+            _calculator.Calculate(operation);
+            var actual = _calculator.GetDisplayNumber();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Calculate_SumThreeAndThree_ReturnsSix()
+        {
+            //Arrange
+            SetUp(new ResultNumber("3"), new DisplayNumber("3"));
+            var expected = "6";
+
+            //Act
+            _calculator.Calculate(new Sum());
+            var actual = _calculator.GetResult();
+
+            //Assert
+            Assert.AreEqual(_calculator.GetDisplayNumber(), "3");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Calculate_SubstractNineAndThree_ReturnsSix()
+        {
+            //Arrange
+            SetUp(new ResultNumber("9"), new DisplayNumber("3"));
+            var expected = "6";
+
+            //Act
+            _calculator.Calculate(new Substract());
+            var actual = _calculator.GetResult();
+
+            Assert.AreEqual(_calculator.GetDisplayNumber(), "3");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Calculate_MultiplyTwoAndFive_ReturnsTen()
+        {
+            //Arrange
+            SetUp(new ResultNumber("2"), new DisplayNumber("5"));
+            var expected = "10";
+
+            //Act
+            _calculator.Calculate(new Multiply());
+            var actual = _calculator.GetResult();
+
+            Assert.AreEqual(_calculator.GetDisplayNumber(), "5");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Calculate_DivisionTenAndTwo_ReturnsFive()
+        {
+            //Arrange
+            SetUp(new ResultNumber("10"), new DisplayNumber("2"));
+            var expected = "5";
+
+            //Act
+            _calculator.Calculate(new Division());
+            var actual = _calculator.GetResult();
+
+            Assert.AreEqual(_calculator.GetDisplayNumber(), "2");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Calculate_SqrtOfNine_ReturnsThree()
+        {
+            //Arrange
+            SetUp(new ResultNumber(""), new DisplayNumber("9"));
+            var expected = "3";
+
+            //Act
+            _calculator.Calculate(new Sqrt());
+            var actual = _calculator.GetDisplayNumber();
+
+            Assert.AreEqual(_calculator.GetResult(), string.Empty);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]

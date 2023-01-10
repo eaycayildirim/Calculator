@@ -1,14 +1,14 @@
 ﻿namespace nsOperations
 {
-    public class Sum : Operations
+    public class Undefined : Operations
     {
-        public Sum() : base(new OperationData(true, true, "+"))
+        public Undefined() : base(new OperationData(false, false, ""))
         {
         }
 
         public override double Compute(double firstNumber, double secondNumber)
         {
-            return firstNumber + secondNumber;
+            return firstNumber;
         }
     }
 }

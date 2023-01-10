@@ -1,4 +1,6 @@
 ﻿using System;
+using nsOperations;
+using nsUtility;
 
 namespace nsDisplayNumber
 {
@@ -6,36 +8,49 @@ namespace nsDisplayNumber
     {
         public DisplayNumber(string str = "")
         {
-            DisplayNumberString = str;
-            Reset();
+            Number = str;
+        }
+
+        public double ToDouble()
+        {
+            return Conversions.TryParseToDouble(Number);
+        }
+
+        public void Compute(Operations operation)
+        {
+            if(operation != new Undefined() && !operation.GetOperationData()._isResultAffected) //Is undefined necessary?
+            {
+                var result = operation.Compute(Convert.ToDouble(Number), 2);
+                Number = result.ToString();
+            }
         }
 
         public void Reset()
         {
-            DisplayNumberString = "";
+            Number = "";
         }
 
-        public void Delete()
+        public void DeleteLastNumber()
         {
-            if(DisplayNumberString.Length > 0)
-                DisplayNumberString = DisplayNumberString.Remove(DisplayNumberString.Length-1);
+            if(Number.Length > 0)
+                Number = Number.Remove(Number.Length-1);
         }
 
         public string DecimalComma()
         {
-            if (DisplayNumberString == "")
-                return DisplayNumberString += "0,";
+            if (Number == "")
+                return Number += "0,";
             if (!IsDecimal())
-                return DisplayNumberString += ',';
+                return Number += ',';
             else
-                return DisplayNumberString;
+                return Number;
         }
 
-        public string DisplayNumberString { get; set; }
+        public string Number { get; set; }
 
         private bool IsDecimal()
         {
-            return DisplayNumberString.Contains(",");
+            return Number.Contains(",");
         }
     }
 }

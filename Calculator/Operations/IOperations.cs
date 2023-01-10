@@ -9,9 +9,9 @@
             this.symbol = symbol;
         }
 
+        public bool _isResultAffected;
+        public bool _isOperationChanged;
         public string symbol;
-        private bool _isResultAffected;
-        private bool _isOperationChanged;
     }
 
     public abstract class Operations

@@ -15,28 +15,51 @@ namespace nsCalculator
 
         public void AddChar(char number)
         {
-            this._displayNumber.DisplayNumberString += number;
+            this._displayNumber.Number += number;
         }
 
         public void SetOperation(Operations operation)
         {
-            this._result.SetOperation(operation);
+            if (operation.GetOperationData()._isOperationChanged)
+            {
+                this._result.Operation = operation;
+            }
         }
 
-        public void Calculate()
+        public void PressChar(char number)
         {
-            if(!this._displayNumber.DisplayNumberString.Equals(""))
-                this._result.Compute(Convert.ToDouble(this._displayNumber.DisplayNumberString));
+            if (_isOperationPressed)
+            {
+                ResetDisplayNumber();
+                _isOperationPressed = false;
+            }
+            AddChar(number);
+        }
+
+        public void Calculate(Operations operation)
+        {
+            SetOperation(operation);
+            if (!_isOperationPressed || operation == new Equals())
+            {
+                Compute(operation);
+            }
+        }
+
+        public void Compute(Operations operation)
+        {
+            _displayNumber.Compute(operation);
+            _result.Compute(operation, ref _displayNumber);
+            _isOperationPressed = false;
         }
 
         public string GetDisplayNumber()
         {
-            return this._displayNumber.DisplayNumberString;
+            return this._displayNumber.Number;
         }
 
         public string GetResult()
         {
-            return _result.ResultString;
+            return _result.Number;
         }
 
         public void DecimalComma()
@@ -57,10 +80,11 @@ namespace nsCalculator
 
         public void DeleteLastNumber()
         {
-            this._displayNumber.Delete();
+            this._displayNumber.DeleteLastNumber();
         }
 
         private ResultNumber _result;
         private DisplayNumber _displayNumber;
+        private bool _isOperationPressed = false;
     }
 }

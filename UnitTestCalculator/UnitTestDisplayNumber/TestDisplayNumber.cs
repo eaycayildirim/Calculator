@@ -10,12 +10,12 @@ namespace UnitTestCalculator
         public void Delete_LastCharacter()
         {
             //Arrange
-            DisplayNumberString = "123";
+            Number = "123";
             var expected = "12";
 
             //Act
-            Delete();
-            var actual = DisplayNumberString;
+            DeleteLastNumber();
+            var actual = Number;
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -25,12 +25,12 @@ namespace UnitTestCalculator
         public void Reset_ResetDisplayNumberString()
         {
             //Arrange
-            DisplayNumberString = "12,3";
+            Number = "12,3";
             var expected = "";
 
             //Act
             Reset();
-            var actual = DisplayNumberString;
+            var actual = Number;
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -40,7 +40,7 @@ namespace UnitTestCalculator
         public void DecimalComma_EmptyNumber_ZeroAndCommaAdded()
         {
             //Arrange
-            DisplayNumberString = "";
+            Number = "";
             var expected = "0,";
 
             //Act
@@ -54,8 +54,8 @@ namespace UnitTestCalculator
         public void DecimalComma_NonDecimalNumber_CommaIsAdded()
         {
             //Arrange
-            DisplayNumberString = "123";
-            var expected = DisplayNumberString + ',';
+            Number = "123";
+            var expected = Number + ',';
 
             //Act
             var actual = DecimalComma();
@@ -68,8 +68,8 @@ namespace UnitTestCalculator
         public void DecimalComma_DecimalNumber_CommaIsNotAdded()
         {
             //Arrange
-            DisplayNumberString = "12,3";
-            var expected = DisplayNumberString;
+            Number = "12,3";
+            var expected = Number;
 
             //Act
             var actual = DecimalComma();

@@ -40,61 +40,61 @@ namespace CalculatorUI
 
         private void OneBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(OneBtn.Content);
+            PressChar(OneBtn.Content);
             UpdateTextBox();
         }
 
         private void TwoBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(TwoBtn.Content);
+            PressChar(TwoBtn.Content);
             UpdateTextBox();
         }
 
         private void ThreeBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(ThreeBtn.Content);
+            PressChar(ThreeBtn.Content);
             UpdateTextBox();
         }
 
         private void FourBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(FourBtn.Content);
+            PressChar(FourBtn.Content);
             UpdateTextBox();
         }
 
         private void FiveBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(FiveBtn.Content);
+            PressChar(FiveBtn.Content);
             UpdateTextBox();
         }
 
         private void SixBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(SixBtn.Content);
+            PressChar(SixBtn.Content);
             UpdateTextBox();
         }
 
         private void SevenBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(SevenBtn.Content);
+            PressChar(SevenBtn.Content);
             UpdateTextBox();
         }
 
         private void EightBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(EightBtn.Content);
+            PressChar(EightBtn.Content);
             UpdateTextBox();
         }
 
         private void NineBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(NineBtn.Content);
+            PressChar(NineBtn.Content);
             UpdateTextBox();
         }
 
         private void ZeroBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChar(ZeroBtn.Content);
+            PressChar(ZeroBtn.Content);
             UpdateTextBox();
         }
 
@@ -104,48 +104,50 @@ namespace CalculatorUI
             UpdateTextBox();
         }
 
-        private void OperationChanged(Operations operation)
+        private void PressOperation(Operations operation)
         {
-            _calculator.Calculate();
-            _calculator.SetOperation(operation);
-            OutputTextBlock.Text = _calculator.GetResult();
-            _calculator.ResetDisplayNumber();
+            var preResult = _calculator.GetResult();
+            _calculator.Calculate(operation);
+            var result = _calculator.GetResult();
+            var displayNumber = _calculator.GetDisplayNumber();
+            var display = operation.GetOperationData()._isResultAffected ? result : displayNumber;
+            OutputTextBlock.Text = display;
+            UpdateMemory(operation, preResult, result, displayNumber);
         }
 
         private void PlusBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(PlusBtn.Content);
-            OperationChanged(new Sum());
+            PressOperation(new Sum());
         }
 
         private void MinusBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(MinusBtn.Content);
-            OperationChanged(new Substract());
+            PressOperation(new Substract());
         }
 
         private void TimesBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(TimesBtn.Content);
-            OperationChanged(new Multiply());
+            PressOperation(new Multiply());
         }
 
         private void DivideBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(DivideBtn.Content);
-            OperationChanged(new Division());
+            PressOperation(new Division());
         }
 
         private void PowBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(PowBtn.Content);
-            OperationChanged(new Pow());
+            PressOperation(new Pow());
         }
 
         private void SqrtBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetMemory(SqrtBtn.Content);
-            OperationChanged(new Sqrt());
+            PressOperation(new Sqrt());
+        }
+
+        private void EqualBtn_Click(object sender, RoutedEventArgs e)
+        {
+            PressOperation(new Equals());
         }
 
         private void BackspaceBtn_Click(object sender, RoutedEventArgs e)
@@ -158,7 +160,7 @@ namespace CalculatorUI
         {
             _calculator.Reset();
             UpdateTextBox();
-            MemoryTextBox.Text = "";
+            ResetMemoryTextBox();
         }
 
         private void UpdateTextBox()
@@ -166,29 +168,24 @@ namespace CalculatorUI
             OutputTextBlock.Text = _calculator.GetDisplayNumber();
         }
 
-        private void AddChar(object input)
+        public void PressChar(object obj)
         {
-            _calculator.AddChar(Convert.ToChar(input));
+            _calculator.PressChar(Convert.ToChar(obj));
         }
 
-        private void EqualBtn_Click(object sender, RoutedEventArgs e)
+        private void ResetMemoryTextBox()
         {
-            _calculator.Calculate();
-            OutputTextBlock.Text = _calculator.GetResult();
-            //_calculator.ResetDisplayNumber();
             MemoryTextBox.Text = "";
         }
 
-        private void GetMemory(object obj)
+        private void UpdateMemory(Operations operation, string preResult, string result, string displayNumber)
         {
-            MemoryTextBox.Text += OutputTextBlock.Text + obj;
+            if(operation == new Equals())
+                MemoryTextBox.Text = preResult + displayNumber + operation.GetOperationData().symbol;
+            else
+                MemoryTextBox.Text = preResult + operation.GetOperationData().symbol;
         }
 
         private Calculator _calculator;
-
-        //TODO: Sqrt, Pow is not working
-        //TODO: Something is wrong when you keep pressing operations
-        //TODO: Something is wrong if you press an operation after equals
-        //TODO: Can't change the operation
     }
 }

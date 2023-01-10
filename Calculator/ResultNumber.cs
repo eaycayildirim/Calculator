@@ -1,5 +1,6 @@
 ﻿using System;
 using nsOperations;
+using nsDisplayNumber;
 
 namespace nsResultNumber
 {
@@ -7,41 +8,35 @@ namespace nsResultNumber
     {
         public ResultNumber(string str = "")
         {
-            ResultString = str;
-            Reset();
+            Number = str;
+            Operation = new Undefined();
         }
 
         ~ResultNumber() { }
 
         public void Reset()
         {
-            Result = 0;
-            Operation = new Sum();
-            ResultString = "";
+            Operation = new Undefined();
+            Number = "";
         }
 
-        public void SetOperation(Operations operation)
+        public void Compute(Operations operation, ref DisplayNumber displayNumber)
         {
-            this.Operation = operation;
+            if (operation != new Undefined() && operation.GetOperationData()._isResultAffected) //Is undefined necessary?
+            {
+                var resultOperation = this.Operation;
+
+                if(this.Number != "" || operation != new Equals())
+                {
+                    var newResult = resultOperation.Compute(Convert.ToDouble(Number), displayNumber.ToDouble());
+                    Number = newResult.ToString();
+                }
+                else
+                    Number = displayNumber.Number;
+            }
         }
 
-        public void Compute(double number)
-        {
-            if (!ResultString.Equals(""))
-            {
-                Result = Convert.ToDouble(ResultString);
-                Result = this.Operation.Compute(Result, number);
-            }
-            else
-            {
-                Result = number;
-            }
-            ResultString = Result.ToString();
-        }
-
-        private double Result { get; set; }
-
-        public string ResultString { get; set; }
+        public string Number { get; set; }
 
         public Operations Operation { get; set; }
     }
