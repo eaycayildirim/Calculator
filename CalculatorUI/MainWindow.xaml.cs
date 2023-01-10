@@ -15,8 +15,8 @@ namespace CalculatorUI
         public MainWindow()
         {
             InitializeComponent();
-            InitializeSymbols();
             InitializeCalculator();
+            InitializeSymbols();
         }
 
         public void InitializeSymbols()
@@ -29,6 +29,7 @@ namespace CalculatorUI
             SqrtBtn.Content = new Sqrt().GetOperationData().symbol;
             PowBtn.Content = new Pow().GetOperationData().symbol;
             EqualBtn.Content = new Equals().GetOperationData().symbol;
+            UpdateTextBox();
         }
 
         public void InitializeCalculator()
@@ -106,14 +107,18 @@ namespace CalculatorUI
 
         private void PressOperation(Operations operation)
         {
-            var preResult = _calculator.GetResult();
             _calculator.Calculate(operation);
             _calculator.SetOperationPressed();
             var result = _calculator.GetResult();
             var displayNumber = _calculator.GetDisplayNumber();
             var display = operation.GetOperationData()._isResultAffected ? result : displayNumber;
-            OutputTextBlock.Text = display;
-            UpdateMemory(operation, preResult, result, displayNumber);
+            SetOutputTextBlock(display);
+            UpdateMemory(operation, result, displayNumber);
+        }
+
+        private void SetOutputTextBlock(string output) 
+        {
+            OutputTextBlock.Text = output.TrimStart('0').PadLeft(1, '0');
         }
 
         private void PlusBtn_Click(object sender, RoutedEventArgs e)
@@ -166,7 +171,7 @@ namespace CalculatorUI
 
         private void UpdateTextBox()
         {
-            OutputTextBlock.Text = _calculator.GetDisplayNumber();
+            SetOutputTextBlock(_calculator.GetDisplayNumber());
         }
 
         public void PressChar(object obj)
@@ -179,14 +184,14 @@ namespace CalculatorUI
             MemoryTextBox.Text = "";
         }
 
-        private void UpdateMemory(Operations operation, string preResult, string result, string displayNumber)
+        private void UpdateMemory(Operations operation, string result, string displayNumber)
         {
-            if (operation == new Equals())
+            if (operation.GetOperationData().symbol == new Equals().GetOperationData().symbol)
             {
-                MemoryTextBox.Text = preResult + displayNumber + operation.GetOperationData().symbol;
+                MemoryTextBox.Text += displayNumber + operation.GetOperationData().symbol;
                 return;
             }
-            MemoryTextBox.Text = preResult + operation.GetOperationData().symbol;
+            MemoryTextBox.Text = result + operation.GetOperationData().symbol;
         }
 
         private Calculator _calculator;

@@ -59,7 +59,7 @@ namespace nsCalculator
 
         public string GetDisplayNumber()
         {
-            return this._displayNumber.Number;
+            return this._displayNumber.Number.Trim('0').PadLeft(1, '0');
         }
 
         public string GetResult()

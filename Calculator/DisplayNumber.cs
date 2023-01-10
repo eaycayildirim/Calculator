@@ -6,7 +6,7 @@ namespace nsDisplayNumber
 {
     public class DisplayNumber
     {
-        public DisplayNumber(string str = "")
+        public DisplayNumber(string str = "0")
         {
             Number = str;
         }
@@ -27,7 +27,7 @@ namespace nsDisplayNumber
 
         public void Reset()
         {
-            Number = "";
+            Number = "0";
         }
 
         public void DeleteLastNumber()
