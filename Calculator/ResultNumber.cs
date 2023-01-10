@@ -26,13 +26,13 @@ namespace nsResultNumber
             {
                 var resultOperation = this.Operation;
 
-                if(this.Number != "" || operation != new Equals())
+                if(!String.IsNullOrWhiteSpace(Number) && operation != new Equals())
                 {
                     var newResult = resultOperation.Compute(Convert.ToDouble(Number), displayNumber.ToDouble());
                     Number = newResult.ToString();
+                    return;
                 }
-                else
-                    Number = displayNumber.Number;
+                Number = displayNumber.Number;
             }
         }
 

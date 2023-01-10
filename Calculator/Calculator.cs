@@ -39,7 +39,7 @@ namespace nsCalculator
         public void Calculate(Operations operation)
         {
             SetOperation(operation);
-            if (!_isOperationPressed || operation == new Equals())
+            if (!_isOperationPressed || operation.GetOperationData().symbol == new Equals().GetOperationData().symbol)
             {
                 Compute(operation);
             }
@@ -50,6 +50,11 @@ namespace nsCalculator
             _displayNumber.Compute(operation);
             _result.Compute(operation, ref _displayNumber);
             _isOperationPressed = false;
+        }
+
+        public void SetOperationPressed() 
+        {
+            _isOperationPressed = true;
         }
 
         public string GetDisplayNumber()

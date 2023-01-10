@@ -108,6 +108,7 @@ namespace CalculatorUI
         {
             var preResult = _calculator.GetResult();
             _calculator.Calculate(operation);
+            _calculator.SetOperationPressed();
             var result = _calculator.GetResult();
             var displayNumber = _calculator.GetDisplayNumber();
             var display = operation.GetOperationData()._isResultAffected ? result : displayNumber;
@@ -180,10 +181,12 @@ namespace CalculatorUI
 
         private void UpdateMemory(Operations operation, string preResult, string result, string displayNumber)
         {
-            if(operation == new Equals())
+            if (operation == new Equals())
+            {
                 MemoryTextBox.Text = preResult + displayNumber + operation.GetOperationData().symbol;
-            else
-                MemoryTextBox.Text = preResult + operation.GetOperationData().symbol;
+                return;
+            }
+            MemoryTextBox.Text = preResult + operation.GetOperationData().symbol;
         }
 
         private Calculator _calculator;
