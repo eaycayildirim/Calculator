@@ -108,7 +108,7 @@ namespace CalculatorUI
         private void PressOperation(Operations operation)
         {
             _calculator.Calculate(operation);
-            _calculator.SetOperationPressed();
+            _calculator.SetOperationPressed(operation);
             var result = _calculator.GetResult();
             var displayNumber = _calculator.GetDisplayNumber();
             var display = operation.GetOperationData()._isResultAffected ? result : displayNumber;
@@ -176,6 +176,12 @@ namespace CalculatorUI
 
         public void PressChar(object obj)
         {
+            if (_calculator.isEqualsPressed()) 
+            {
+                _calculator.Reset();
+                UpdateTextBox();
+                ResetMemoryTextBox();
+            }
             _calculator.PressChar(Convert.ToChar(obj));
         }
 

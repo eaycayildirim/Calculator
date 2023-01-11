@@ -52,9 +52,15 @@ namespace nsCalculator
             _isOperationPressed = false;
         }
 
-        public void SetOperationPressed() 
+        public void SetOperationPressed(Operations operations) 
         {
             _isOperationPressed = true;
+            _isEqualsPressed = operations.GetOperationData().symbol == new Equals().GetOperationData().symbol;
+        }
+
+        public bool isEqualsPressed() 
+        { 
+            return _isEqualsPressed;  
         }
 
         public string GetDisplayNumber()
@@ -91,5 +97,6 @@ namespace nsCalculator
         private ResultNumber _result;
         private DisplayNumber _displayNumber;
         private bool _isOperationPressed = false;
+        private bool _isEqualsPressed = false;
     }
 }

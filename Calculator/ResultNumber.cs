@@ -6,7 +6,7 @@ namespace nsResultNumber
 {
     public class ResultNumber
     {
-        public ResultNumber(string str = "0")
+        public ResultNumber(string str = "")
         {
             Number = str;
             Operation = new Undefined();
@@ -17,7 +17,7 @@ namespace nsResultNumber
         public void Reset()
         {
             Operation = new Undefined();
-            Number = "0";
+            Number = "";
         }
 
         public void Compute(Operations operation, ref DisplayNumber displayNumber)
